@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { searchMovies } from '../../API'
-import { ACTION_GET_MOVIES, ACTION_SET_ISLOADING } from '../../config'
+import { ACTION_GET_MOVIES, ACTION_LOAD_MORE, ACTION_SET_ISLOADING } from '../../config'
 import MovieDBContext from '../../context/moviedb/MovieDBContext'
 
 
@@ -14,9 +14,12 @@ function MovieSearch() {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
+    dispatch({ type: ACTION_LOAD_MORE, payload: {query: text, page: 1}})
+
     dispatch({ type: ACTION_SET_ISLOADING })
     const movies = await searchMovies(text, 1)
-    dispatch({ type: ACTION_GET_MOVIES, payload: movies })
+    dispatch({ type: ACTION_GET_MOVIES, payload: movies })    
+
     setText("")
   }
 
