@@ -8,7 +8,7 @@ import MovieSearch from '../movies/MovieSearch'
 function SearchContainer() {
   return (
     <Container fluid={true} className="position-relative px-0">
-      <Image fluid={true} src={bgImage} alt="title" className='w-100 opacity-50' style={{height: "50vh"}} />
+      <Image fluid={true} src={bgImage} alt="title" className='w-100 opacity-50' style={{height: "40vh"}} />
       <div className="position-absolute top-50 start-50 translate-middle text-center">
         <h1 className='fw-bold'style={{ fontSize: "calc(1.5rem + 2.5vmin)" }}>Find Movies</h1>
         

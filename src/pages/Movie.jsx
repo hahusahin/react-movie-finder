@@ -1,12 +1,11 @@
 import React, { useContext, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { fetchMovieDetails } from '../API'
 import MovieDBContext from '../context/moviedb/MovieDBContext'
 import { calcMovieLength } from '../utils'
 import { ImClock } from 'react-icons/im'
 import moment from 'moment'
-import { ACTION_SET_ISLOADING, ACTION_GET_MOVIE_DETAILS, IMAGE_BASE_URL, 
-  BACKDROP_SIZE, POSTER_SIZE } from '../config'
+import { ACTION_SET_ISLOADING, ACTION_GET_MOVIE_DETAILS, IMAGE_BASE_URL, POSTER_SIZE } from '../config'
 import { Spinner } from 'react-bootstrap'
 import ActorItem from '../components/movies/ActorItem'
 import NotImage from '../assets/not-found-img.png'
@@ -15,6 +14,7 @@ function Movie() {
 
   const {movie, actors, isLoading, dispatch} = useContext(MovieDBContext)
   const params = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     
@@ -37,9 +37,12 @@ function Movie() {
     <>
       {/* Back to Search */}
       <div className='container mt-4 text-center'>
-        <Link to="/">
-          <button className='btn btn-outline-light'>Back to Search</button>
-        </Link>
+        <button 
+          className='btn btn-outline-light'
+          onClick={()=> navigate(-1)}
+        >
+          Back to Search
+        </button>
       </div>
       {/* Movie Details */}
       <div className='container my-4'>

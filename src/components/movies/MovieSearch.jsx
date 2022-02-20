@@ -22,7 +22,7 @@ function MovieSearch() {
 
   return (
     <>
-      <form className='row d-flex gap-4 gap-md-0 mt-5 justify-content-center' onSubmit={handleSubmit}>
+      <form className='row d-flex gap-4 gap-md-0 mt-4 justify-content-center' onSubmit={handleSubmit}>
         <div className="col-auto">
           <input 
             className='form-control form-control-lg'

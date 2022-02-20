@@ -14,12 +14,12 @@ function App() {
         <div className="d-flex flex-column vh-100">
           <Header />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route exact path="/" element={<Home />} />
               <Route path="/movie/:movieId" element={<Movie />} />
               <Route path="/about" element={<About />}/>
               <Route path="/*" element={<NotFound />}/>
             </Routes>
-            <Footer />
+          <Footer />
         </div>          
       </Router>
     </MovieDBProvider>
