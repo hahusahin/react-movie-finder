@@ -18,6 +18,8 @@ function Movie() {
 
   useEffect(() => {
     
+    window.scrollTo(0, 0)
+
     const getDetails = async() => {
       dispatch({type: ACTION_SET_ISLOADING})
       const data = await fetchMovieDetails(params.movieId)
