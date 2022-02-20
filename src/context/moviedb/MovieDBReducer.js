@@ -1,5 +1,5 @@
 import {
-  ACTION_GET_MOVIES, ACTION_SET_ISLOADING, ACTION_GET_MOVIE_DETAILS, ACTION_CLEAR_ALL
+  ACTION_GET_MOVIES, ACTION_SET_ISLOADING, ACTION_GET_MOVIE_DETAILS, ACTION_CLEAR_ALL, ACTION_LOAD_MORE
 } from "../../config"
 
 const MovieDBReducer = (state, action) => {
@@ -22,6 +22,11 @@ const MovieDBReducer = (state, action) => {
         movie: action.payload.movie,
         actors: action.payload.actors,
         isLoading: false,
+      }
+    case ACTION_LOAD_MORE:
+      return {
+        ...state,
+        loadMore: action.payload
       }
     case ACTION_CLEAR_ALL:
       return {

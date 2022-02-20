@@ -9,6 +9,7 @@ export const MovieDBProvider = ({children}) => {
     movies: [],
     movie: {},
     actors: [],
+    loadMore: {},
     isLoading: false,
     isSubmitted: false
   }
