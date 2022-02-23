@@ -11,14 +11,14 @@ function App() {
   return (
     <MovieDBProvider>
       <Router>
-        <div className="d-flex flex-column vh-100">
+        <div className="d-flex flex-column justify-content-between vh-100">
           <Header />
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route path="/movie/:movieId" element={<Movie />} />
-              <Route path="/about" element={<About />}/>
-              <Route path="/*" element={<NotFound />}/>
-            </Routes>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/movie/:movieId" element={<Movie />} />
+            <Route path="/about" element={<About />}/>
+            <Route path="/*" element={<NotFound />}/>
+          </Routes>
           <Footer />
         </div>          
       </Router>
