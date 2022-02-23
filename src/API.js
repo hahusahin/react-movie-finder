@@ -3,20 +3,22 @@ import { API_URL, API_KEY, SEARCH_URL } from "./config"
 
 const moviedb = axios.create()
 
-// search movies by query string
+
 export const searchMovies = async(query, page) => {
   
   const params = new URLSearchParams({
     query: query,
     page : page
   })
-  
-  const res = await moviedb.get(`${SEARCH_URL}${params}`)
 
-  const {results} = res.data 
+  const [movies, genres] = await Promise.all([
+    moviedb.get(`${SEARCH_URL}${params}`),
+    moviedb.get(`${API_URL}/genre/movie/list?api_key=${API_KEY}`)
+  ])
 
-  return results
+  return {movies: movies.data.results, genres: genres.data.genres}
 }
+
 
 export const fetchMovieDetails = async(movieId) => {
 
@@ -26,4 +28,14 @@ export const fetchMovieDetails = async(movieId) => {
   ])
   
   return {movie: movie.data, actors: actors.data.cast}
+}
+
+
+export const getGenres = async() => {
+
+  const res = await moviedb.get(`${API_URL}/genre/movie/list?api_key=${API_KEY}`)
+
+  const {genres} = res.data
+  
+  return genres
 }

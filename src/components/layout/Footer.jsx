@@ -3,7 +3,7 @@ import {FaGithub, FaTwitter, FaInstagram} from 'react-icons/fa'
 
 function Footer() {
   return (
-      <footer className='text-center mt-auto'>
+      <footer className='text-center mt-2'>
         <a className='mx-3 fs-3 text-light' href="https://www.github.com/hahusahin" target="_blank" rel="noreferrer">
           <FaGithub />
         </a>

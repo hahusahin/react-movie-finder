@@ -1,5 +1,6 @@
 import {
-  ACTION_GET_MOVIES, ACTION_SET_ISLOADING, ACTION_GET_MOVIE_DETAILS, ACTION_CLEAR_ALL, ACTION_LOAD_MORE
+  ACTION_GET_MOVIES, ACTION_SET_ISLOADING, ACTION_GET_MOVIE_DETAILS, ACTION_CLEAR_ALL, 
+  ACTION_SEARCH_UTILS, ACTION_SET_FILTERED_MOVIES, ACTION_SET_MOVIE_FILTERS
 } from "../../config"
 
 const MovieDBReducer = (state, action) => {
@@ -10,11 +11,15 @@ const MovieDBReducer = (state, action) => {
         movies: action.payload,
         isLoading: false,
       }
+    case ACTION_SET_FILTERED_MOVIES:
+      return {
+        ...state,
+        filteredMovies: action.payload,
+      }
     case ACTION_SET_ISLOADING:
       return {
         ...state,
-        isLoading: true,
-        isSubmitted: true
+        isLoading: true
       }
     case ACTION_GET_MOVIE_DETAILS:
       return {
@@ -23,19 +28,26 @@ const MovieDBReducer = (state, action) => {
         actors: action.payload.actors,
         isLoading: false,
       }
-    case ACTION_LOAD_MORE:
+    case ACTION_SEARCH_UTILS:
       return {
         ...state,
-        loadMore: action.payload
+        searchUtils: action.payload
+      }
+    case ACTION_SET_MOVIE_FILTERS:
+      return {
+        ...state,
+        filters: action.payload
       }
     case ACTION_CLEAR_ALL:
       return {
         ...state,
         movies: [],
+        filteredMovies: [],
         movie: {},
         actors: [],
+        searchUtils: {query: "", page: 1, genres: []},
+        filters: { genre: "all", adult: "all", rating: 0, relDate: 0 },
         isLoading: false,
-        isSubmitted: false,
       }
     default:
       return state
