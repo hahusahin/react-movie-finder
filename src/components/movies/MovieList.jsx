@@ -200,7 +200,7 @@ function MovieList() {
         </div>
       )}
 
-      {filteredMovies.length === 0 && <p className='text-center fs-4'>No Movies Found based on this filter</p>}
+      {/* {filteredMovies.length === 0 && <p className='text-center fs-4'>No Movies Found based on this filter</p>} */}
 
       {(movies.length > 0 && !isLoading) && (
         <div className="mt-2 mb-5 text-center">
