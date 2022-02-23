@@ -50,7 +50,7 @@ function MovieList() {
 
     if(filters.rating === "1"){
       list = list.sort((a, b) => (a.vote_average - b.vote_average))
-    } else {
+    } else if(filters.rating === "-1") { 
       list = list.sort((a, b) => (b.vote_average - a.vote_average))
     }    
 
@@ -65,7 +65,7 @@ function MovieList() {
 
     if(filters.relDate === "1"){
       list = list.sort((a, b) => (new Date(a.release_date) - new Date(b.release_date)))
-    } else {
+    } else if (filters.relDate === "-1"){
       list = list.sort((a, b) => (new Date(b.release_date) - new Date(a.release_date)))
     }
 
